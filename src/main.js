@@ -39,23 +39,63 @@ dropDown.addEventListener('change', function() {
   const selectVal = this.value
 
   if(selectVal === "mercury"){
-    imgPlanet = "mercury.jpeg"
-  }
-  if(selectVal === "Earth"){
-    imgPlanet = "Earth.jpeg"
+    imgPlanet = "./img/mercury.jpeg"
+    atmosphere.material.uniforms.uAtmosphereColor.value.set(0x8c8c8c)
   }
 
-  sphere.material.uniforms.globeTexture.value = new THREE.TextureLoader().load(`./img/${imgPlanet}`)
+  if(selectVal === "venus"){
+    imgPlanet = "./img/venus.jpeg"
+    atmosphere.material.uniforms.uAtmosphereColor.value.set()
+  }
+
+  if(selectVal === "earth"){
+    imgPlanet = "./img/Earth.jpeg"
+    atmosphere.material.uniforms.uAtmosphereColor.value.set(0x4d99ff)
+  }
+
+  if(selectVal === "mars"){
+    imgPlanet = "./img/mars.jpeg"
+    atmosphere.material.uniforms.uAtmosphereColor.value.set(0x4d99ff)
+  }
+
+  if(selectVal === "jupiter"){
+    imgPlanet = "./img/jupiter.jpeg"
+    atmosphere.material.uniforms.uAtmosphereColor.value.set(0x4d99ff)
+  }
+
+  if(selectVal === "saturn"){
+    imgPlanet = "./img/saturn.jpeg"
+    atmosphere.material.uniforms.uAtmosphereColor.value.set(0x4d99ff)
+  }
+
+  if(selectVal === "uranus"){
+    imgPlanet = "./img/uranus.jpeg"
+    atmosphere.material.uniforms.uAtmosphereColor.value.set(0x4d88ff)
+  }
+
+  if(selectVal === "neptune"){
+    imgPlanet = "./img/neptune.jpeg"
+    atmosphere.material.uniforms.uAtmosphereColor.value.set(0x4d99ff)
+  }
+
+  sphere.material.uniforms.globeTexture.value = new THREE.TextureLoader().load(`${imgPlanet}`)
 })
 
 const atmosphere = new THREE.Mesh(
   new THREE.SphereGeometry(5,50,50),
   new THREE.ShaderMaterial({
     vertexShader: atmosphereVertexShader,
-    fragmentShader: atmosphereFragmentShader, blending: THREE.AdditiveBlending, side: THREE.BackSide
+    fragmentShader: atmosphereFragmentShader, 
+    blending: THREE.AdditiveBlending, 
+    side: THREE.BackSide,
+    uniforms: {
+      uAtmosphereColor: {value: new THREE.Color(0x4d99ff)}
+    }
 
   })
 )
+
+const startBlank = new THREE.Texture()
 
 //creating the sphere
 const sphere = new THREE.Mesh(
