@@ -8,6 +8,10 @@ import atmosphereFragmentShader from './shaders/atmosphereFragment.glsl'
 
 const canvasContainer = document.querySelector('#canvasContainer');
 
+
+
+
+
 const scene = new THREE.Scene()
 const camera = new THREE.
   PerspectiveCamera(
@@ -29,6 +33,30 @@ renderer.setSize(canvasContainer.offsetWidth, canvasContainer.offsetHeight)
 renderer.setPixelRatio(window.devicePixelRatio)
 
 
+const dropDown = document.querySelector("#planets")
+let imgPlanet = ''
+dropDown.addEventListener('change', function() {
+  const selectVal = this.value
+
+  if(selectVal === "mercury"){
+    imgPlanet = "mercury.jpeg"
+  }
+  if(selectVal === "Earth"){
+    imgPlanet = "Earth.jpeg"
+  }
+
+  sphere.material.uniforms.globeTexture.value = new THREE.TextureLoader().load(`./img/${imgPlanet}`)
+})
+
+const atmosphere = new THREE.Mesh(
+  new THREE.SphereGeometry(5,50,50),
+  new THREE.ShaderMaterial({
+    vertexShader: atmosphereVertexShader,
+    fragmentShader: atmosphereFragmentShader, blending: THREE.AdditiveBlending, side: THREE.BackSide
+
+  })
+)
+
 //creating the sphere
 const sphere = new THREE.Mesh(
   new THREE.SphereGeometry(5, 50, 50), 
@@ -38,18 +66,9 @@ const sphere = new THREE.Mesh(
     fragmentShader,
     uniforms: {
       globeTexture: {
-        value: new THREE.TextureLoader().load('./img/images.jpeg')
+        value: new THREE.TextureLoader().load(`./img/${imgPlanet}`)
       }
     }
-  })
-)
-
-const atmosphere = new THREE.Mesh(
-  new THREE.SphereGeometry(5,50,50),
-  new THREE.ShaderMaterial({
-    vertexShader: atmosphereVertexShader,
-    fragmentShader: atmosphereFragmentShader, blending: THREE.AdditiveBlending, side: THREE.BackSide
-
   })
 )
 
@@ -83,15 +102,32 @@ const mouse = {
   y:undefined
 }
 
-let isSpaceHelp = false
+let isSpaceHeld = false
 let autoSpin = false
 let lastPress = 0
+addEventListener('keydown', (e) =>{
+  if(e.code !== 'Space') return
+  if(e.repeat ) return
 
+  const now = Date.now()
+  if(now-lastPress < 300 ){ autoSpin = !autoSpin}
+
+  lastPress= now
+  isSpaceHeld = true
+})
+
+addEventListener('keyup', (e) =>{
+  if(e.code !== 'Space') return
+  isSpaceHeld = false
+})
 
 function animate() {
   requestAnimationFrame(animate)
   renderer.render(scene, camera)
-  sphere.rotation.y+= 0.003
+  if(autoSpin || isSpaceHeld){
+    sphere.rotation.y+= 0.003
+  }
+  
   gsap.to(group.rotation, {
     x:-mouse.y * 0.3,
     y: mouse.x*0.5,

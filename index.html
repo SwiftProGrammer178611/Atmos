@@ -26,7 +26,18 @@
     <div class="flex h-screen bg-black">
       <div class="w-1/2 flex flex-col justify-center px-8">
         <h1 class="text-white text-4xl mb-8 font-exo font-bold">ATMOS</h1>
-        <p class="text-white">ho</p>
+        <p class="text-white">Change planets and Explore!</p>
+        <label for="planets">Choose a planet:</label>
+        <select name="planets" id="planets">
+          <option value = "mercury">Mercury</option>
+          <option value = "Venus">Venus</option>
+          <option value = "Earth">Earth</option>
+          <option value = "Mars">Mars</option>
+          <option value = "Jupiter">Jupiter</option>
+          <option value = "Saturn">Saturn</option>
+          <option value = "Uranus">Uranus</option>
+          <option value = "Neptune">Neptune</option>
+        </select>
       </div>
       <div class="w-1/2" id="canvasContainer">
         <canvas></canvas>
