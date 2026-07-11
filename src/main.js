@@ -8,15 +8,26 @@ const camera = new THREE.
     0.1,
     1000
   )
-const renderer = new THREE.wedGLRenderer(
+const renderer = new THREE.WebGLRenderer(
+  {
+    //helps remove jagged edges
+    antialias: true
+  }
 )
 renderer.setSize(innerWidth, innerHeight)
+renderer.setPixelRatio(window.devicePixelRatio)
 document.body.appendChild(renderer.domElement)
 
 //creating the sphere
-const sphere = new THREE.Mesh(new THREE.SphereGeometry(5, 50, 50), new THREE.MeshBasicMaterial({
-  color: 0x
-}))
+const sphere = new THREE.Mesh(
+  new THREE.SphereGeometry(5, 50, 50), 
+  new THREE.MeshBasicMaterial({
+    //color: 0xFF0000
+    map: new THREE.TextureLoader().load('./img/images.jpeg')
+  })
+)
+scene.add(sphere)
+camera.position.z = 15 
 
 function animate() {
   requestAnimationFrame(animate)
