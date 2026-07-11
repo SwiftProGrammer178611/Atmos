@@ -32,13 +32,22 @@ const renderer = new THREE.WebGLRenderer(
 renderer.setSize(canvasContainer.offsetWidth, canvasContainer.offsetHeight)
 renderer.setPixelRatio(window.devicePixelRatio)
 
+const dropdwnBtn = document.querySelector("#dropdwnBtn")
 
-const dropDown = document.querySelector("#planets")
-let imgPlanet = ''
-dropDown.addEventListener('change', function() {
-  const selectVal = this.value
+const dropdwnList = document.querySelector("#dropdwnList")
 
-  if(selectVal === "mercury"){
+const selectedLabel = document.querySelector("#selectedLabel")
+
+dropdwnBtn.addEventListener('click', () => {
+  dropdwnList.classList.toggle('hidden')
+})
+
+dropdwnList.querySelectorAll('li').forEach(item => {
+  item.addEventListener('click', () => {
+    const selectVal = item.dataset.value
+    selectedLabel.textContent = item.textContent
+    dropdwnList.classList.add('hidden')
+    if(selectVal === "mercury"){
     imgPlanet = "./img/mercury.jpeg"
     atmosphere.material.uniforms.uAtmosphereColor.value.set(0x8c8c8c)
   }
@@ -79,7 +88,12 @@ dropDown.addEventListener('change', function() {
   }
 
   sphere.material.uniforms.globeTexture.value = new THREE.TextureLoader().load(`${imgPlanet}`)
+  })
 })
+
+const dropDown = document.querySelector("#planets")
+let imgPlanet = ''
+
 
 const atmosphere = new THREE.Mesh(
   new THREE.SphereGeometry(5,50,50),
@@ -106,7 +120,7 @@ const sphere = new THREE.Mesh(
     fragmentShader,
     uniforms: {
       globeTexture: {
-        value: new THREE.TextureLoader().load(`./img/${imgPlanet}`)
+        value: startBlank
       }
     }
   })

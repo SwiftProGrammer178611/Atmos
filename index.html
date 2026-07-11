@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -27,16 +27,23 @@
       <div class="w-1/2 flex flex-col justify-center px-8">
         <h1 class="text-white text-4xl mb-8 font-exo font-bold">ATMOS</h1>
         <p class="text-white">Change planets and Explore!</p>
-        <label for="planets">Choose a planet:</label>
-        <select name="planets" id="planets">
-          <option value = "mercury">Mercury</option>
-          <option value = "venus">Venus</option>
-          <option value = "earth">Earth</option>
-          <option value = "mars">Mars</option>
-          <option value = "jupiter">Jupiter</option>
-          <option value = "saturn">Saturn</option>
-          <option value = "uranus">Uranus</option>
-          <option value = "neptune">Neptune</option>
+        <div class=" relative w-32" id="planetDropdown">
+          <button id = "dropdwnBtn" type = "dropdwnbutton" class = "bg-red-900 w-full rounded-full p-4 text-left flex justify-center items-center">
+            <span id = "selectedLabel">Mercury</span>
+            <span>▾</span>
+          </button>
+          <ul id="dropdwnList" class="hidden absolute mt-2 w-full bg-red-900 rounded-xl overflow-hidden z-10">
+            <li id = "mercury" data-value="mercury" class = "font-bold px-4 py-2 hover:bg-red-800 cursor-pointer">Mercury</li>
+            <li id = "venus" data-value="venus" class = "font-bold px-4 py-2 hover:bg-red-800 cursor-pointer">Venus</li>
+            <li id = "earth" data-value="earth" class = "font-bold px-4 py-2 hover:bg-red-800 cursor-pointer">Earth</li>
+            <li id = "mars" data-value="mars" class = "font-bold px-4 py-2 hover:bg-red-800 cursor-pointer">Mars</li>
+            <li id = "jupiter" data-value="jupiter" class = "font-bold px-4 py-2 hover:bg-red-800 cursor-pointer">Jupiter</li>
+            <li id = "saturn" data-value="saturn" class = "font-bold px-4 py-2 hover:bg-red-800 cursor-pointer">Saturn</li>
+            <li id = "uranus" data-value="uranus" class = "font-bold px-4 py-2 hover:bg-red-800 cursor-pointer">Uranus</li>
+            <li id = "neptune" data-value="neptune" class = "font-bold px-4 py-2 hover:bg-red-800 cursor-pointer">Neptune</li>
+          </ul>
+          
+        </div>
         </select>
       </div>
       <div class="w-1/2" id="canvasContainer">
