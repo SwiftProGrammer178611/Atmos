@@ -48,42 +48,42 @@ dropdwnList.querySelectorAll('li').forEach(item => {
     selectedLabel.textContent = item.textContent
     dropdwnList.classList.add('hidden')
     if(selectVal === "mercury"){
-    imgPlanet = "./img/mercury.jpeg"
+    imgPlanet = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTC3mng660gplKQrmHLOMtEFyj_-S-ZRPXgxNgLZlKP1A&s=10"
     atmosphere.material.uniforms.uAtmosphereColor.value.set(0x8c8c8c)
   }
 
   if(selectVal === "venus"){
-    imgPlanet = "./img/venus.jpeg"
+    imgPlanet = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjs1xzAo8ak_ew1wQPav4Lrr_57GlaDexA9hl6NKfEnA&s=10"
     atmosphere.material.uniforms.uAtmosphereColor.value.set()
   }
 
   if(selectVal === "earth"){
-    imgPlanet = "./img/Earth.jpeg"
+    imgPlanet = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgsZg-ssT-mLLM0x0zR5fnhWBrla9pSIa3GWJFtwz4Lw&s=10"
     atmosphere.material.uniforms.uAtmosphereColor.value.set(0x4d99ff)
   }
 
   if(selectVal === "mars"){
-    imgPlanet = "./img/mars.jpeg"
+    imgPlanet = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgsH5xPsSKHqaXQ3E3ydKUfdB9WdHT9-lpR7xqR01M7g&s=10"
     atmosphere.material.uniforms.uAtmosphereColor.value.set(0x4d99ff)
   }
 
   if(selectVal === "jupiter"){
-    imgPlanet = "./img/jupiter.jpeg"
+    imgPlanet = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYOxdhvxZq31VOzjr8Xsh76l1d_Zy5ojGXK23muKV0lQ&s=10"
     atmosphere.material.uniforms.uAtmosphereColor.value.set(0x4d99ff)
   }
 
   if(selectVal === "saturn"){
-    imgPlanet = "./img/saturn.jpeg"
+    imgPlanet = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP88br8C8jSUeLNUj4jBEglCQo15LZvagKCLNk2AB7Kg&s=10"
     atmosphere.material.uniforms.uAtmosphereColor.value.set(0x4d99ff)
   }
 
   if(selectVal === "uranus"){
-    imgPlanet = "./img/uranus.jpeg"
+    imgPlanet = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVDGfu7XhvH-fIGA_5V2Vy8XZW-lYtlpn8IIHRJaLfew&s=10"
     atmosphere.material.uniforms.uAtmosphereColor.value.set(0x4d88ff)
   }
 
   if(selectVal === "neptune"){
-    imgPlanet = "./img/neptune.jpeg"
+    imgPlanet = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5HiVHq6JSQ5bDk_y5qlOVzxXwGHHw6f6qRG0sbOyZWQ&s=10"
     atmosphere.material.uniforms.uAtmosphereColor.value.set(0x4d99ff)
   }
 
